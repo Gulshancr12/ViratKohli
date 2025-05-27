@@ -1,7 +1,6 @@
 # KING KOHLI: The Ultimate Virat Kohli Fan Archives 🏏👑
 
-![Virat Kohli Fan Site Banner](https://via.placeholder.com/1200x400/101010/FF003C?text=KING+KOHLI+ARCHIVES)
-<!-- Replace the placeholder banner with an actual cool banner image for your site -->
+<!-- Banner line removed as requested -->
 
 Welcome to the official repository for **KING KOHLI: The Ultimate Virat Kohli Fan Archives** – a premium, vintage-themed, and visually stunning fan website dedicated to the Indian cricket legend, Virat Kohli. This project aims to be the most comprehensive and aesthetically pleasing online destination for fans to explore his career, achievements, and iconic moments.
 
@@ -81,11 +80,11 @@ To get a local copy up and running, follow these simple steps.
 
 1.  **Clone the repo:**
     ```sh
-    git clone https://github.com/[Your-GitHub-Username]/[Your-Repo-Name].git
+    git clone https://github.com/Gulshancr12/ViratKohli.git
     ```
 2.  **Navigate to the project directory:**
     ```sh
-    cd [Your-Repo-Name]
+    cd ViratKohli
     ```
 3.  **Install NPM packages:**
     ```sh
