@@ -1,0 +1,608 @@
+/* --- VINTAGE THEME CSS - FOR HOME.JSX --- */
+
+/* --- Global Styles & Variables --- */
+:root {
+  --font-vintage-heading: 'Playfair Display', serif;
+  --font-vintage-subheading: 'Merriweather', serif;
+  --font-vintage-body: 'Merriweather', serif;
+  --font-vintage-accent: 'Special Elite', cursive;
+
+  --color-vintage-bg: #f5f5dc;
+  --color-vintage-bg-darker: #e0d8c0;
+  --color-vintage-text: #3a2414;
+  --color-vintage-heading-text: #2c1b0e;
+  --color-vintage-accent-gold: #8c7853;
+  --color-vintage-accent-red: #7a2f2f;
+  --color-vintage-border: #c8bca8;
+  --color-vintage-overlay: rgba(44, 27, 14, 0.3);
+
+  --section-padding-vintage: 120px 0;
+  --container-width-vintage: 1100px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body { /* Apply directly if this is your main global CSS */
+  font-family: var(--font-vintage-body);
+  background-color: var(--color-vintage-bg);
+  color: var(--color-vintage-text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Use .kohli-vintage-landing as the main wrapper if body already has styles */
+.kohli-vintage-landing {
+    position: relative;
+}
+
+.page-texture-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../assets/paper-texture-light.png'); /* Path relative to CSS or public folder */
+    background-repeat: repeat;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.container.vintage-container {
+  width: 90%;
+  max-width: var(--container-width-vintage);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-vintage-heading);
+  font-weight: 700;
+  color: var(--color-vintage-heading-text);
+  line-height: 1.2;
+  margin-bottom: 0.75em;
+}
+
+p {
+  margin-bottom: 1.5em;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+a {
+  color: var(--color-vintage-accent-red);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: var(--color-vintage-accent-gold);
+}
+
+img.vintage-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border: 5px solid var(--color-vintage-bg-darker);
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+}
+img.vintage-image.with-grain {
+    position: relative;
+}
+img.vintage-image.with-grain::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('../../assets/film-grain-overlay.jpg'); /* Path relative to CSS or public folder */
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.vintage-section {
+  padding: var(--section-padding-vintage);
+  position: relative;
+  overflow: hidden;
+}
+.vintage-section.dark-bg-vintage {
+  background-color: var(--color-vintage-bg-darker);
+  color: var(--color-vintage-text);
+  border-top: 1px solid var(--color-vintage-border);
+  border-bottom: 1px solid var(--color-vintage-border);
+}
+.vintage-section.dark-bg-vintage h2,
+.vintage-section.dark-bg-vintage h3,
+.vintage-section.dark-bg-vintage .vintage-section-title {
+    color: var(--color-vintage-heading-text);
+}
+
+/* Custom Mouse Cursor (if used from Home.jsx) */
+.mouse-cursor-custom {
+    position: fixed; width: 20px; height: 20px; pointer-events: none;
+    z-index: 10000; transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease;
+}
+.mouse-cursor-dot {
+    width: 8px; height: 8px; background-color: var(--color-vintage-accent-gold);
+    border-radius: 50%; position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%); transition: transform 0.2s ease;
+}
+a:hover ~ .mouse-cursor-custom .mouse-cursor-dot,
+button:hover ~ .mouse-cursor-custom .mouse-cursor-dot {
+    transform: translate(-50%, -50%) scale(2.5);
+    background-color: var(--color-vintage-accent-red);
+}
+a:hover ~ .mouse-cursor-custom,
+button:hover ~ .mouse-cursor-custom { width: 30px; height: 30px; }
+
+/* --- Hero Section --- */
+.hero-section-vintage {
+  min-height: 100vh; height: auto; padding-bottom: 80px;
+  background-size: cover; background-position: center center;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; position: relative;
+  color: var(--color-vintage-bg);
+}
+/* Parallax for hero text (if class .hero-content-parallax-vintage is used in JSX) */
+.hero-content-parallax-vintage {
+    transition: transform 0.1s linear; /* Smooth out JS updates a bit */
+}
+.hero-film-grain-overlay {
+    position: absolute; top:0; left:0; width: 100%; height: 100%;
+    background-image: url('../../assets/film-grain-overlay.jpg');
+    opacity: 0.08; pointer-events: none; z-index: 1;
+}
+.hero-overlay-vintage {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to bottom, rgba(42, 27, 14, 0.5) 0%, rgba(42, 27, 14, 0.85) 100%);
+  z-index: 2;
+}
+.hero-content-vintage { position: relative; z-index: 3; padding: 20px; }
+.hero-title-vintage {
+  font-family: var(--font-vintage-heading); font-weight: 900;
+  font-size: clamp(4rem, 10vw, 7rem); margin-bottom: 0.1em;
+  letter-spacing: -2px; line-height: 1; color: var(--color-vintage-bg);
+  text-shadow: 2px 2px 0px var(--color-vintage-accent-gold), 4px 4px 0px rgba(0,0,0,0.3);
+}
+.hero-title-vintage .hero-title-char { font-size: 1.3em; color: var(--color-vintage-accent-gold); margin-right: -0.05em; }
+.hero-subtitle-vintage {
+  font-family: var(--font-vintage-subheading); font-weight: 400; font-style: italic;
+  font-size: clamp(1.8rem, 4vw, 2.8rem); margin-top: 0.2em; margin-bottom: 0.8em;
+  letter-spacing: 1px; color: var(--color-vintage-accent-gold);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+.hero-subtitle-kohli-vintage {
+    font-family: var(--font-vintage-heading); font-style: normal;
+    color: var(--color-vintage-bg); padding: 0 0.2em;
+}
+.hero-tagline-vintage {
+  font-family: var(--font-vintage-accent); font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  margin-bottom: 2em; color: var(--color-vintage-bg-darker); letter-spacing: 0.5px;
+}
+.hero-signature-wrapper-vintage { margin-top: 30px; }
+.hero-signature-vintage {
+  max-width: clamp(200px, 25vw, 280px);
+  filter: contrast(1.2) brightness(0.9) sepia(0.3);
+}
+.scroll-down-vintage {
+  position: absolute; bottom: 30px; left: 50%;
+  transform: translateX(-50%); width: 2px; height: 60px; z-index: 3;
+}
+.scroll-line {
+  width: 100%; height: 100%; background-color: var(--color-vintage-accent-gold);
+  animation: scrollLineAnim 2s ease-in-out infinite; transform-origin: top center;
+}
+@keyframes scrollLineAnim {
+  0% { transform: scaleY(0); opacity: 0; }
+  50% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(0); opacity: 0; transform: translateY(100%); }
+}
+
+/* --- Vintage Section Titles & Dividers --- */
+.vintage-section-title {
+  font-family: var(--font-vintage-heading); font-size: clamp(2.2rem, 5vw, 3.5rem);
+  text-align: center; margin-bottom: 20px; color: var(--color-vintage-heading-text);
+  font-weight: 900;
+}
+.vintage-section-title.alt { color: var(--color-vintage-text); }
+.title-decorative-flourish {
+  display: inline-block; width: 20px; height: 2px;
+  background-color: var(--color-vintage-accent-gold);
+  margin: 0 15px; vertical-align: middle;
+}
+.vintage-section-title.alt .title-decorative-flourish { background-color: var(--color-vintage-accent-red); }
+.vintage-divider {
+  width: 100px; height: 3px; background-color: var(--color-vintage-accent-gold);
+  margin: 0 auto 40px auto; border-radius: 1px;
+}
+.vintage-divider.alt { background-color: var(--color-vintage-accent-red); }
+
+/* --- Chapter I: The Overture --- */
+.chapter-overture { text-align: center; }
+.vintage-intro-text {
+  font-family: var(--font-vintage-subheading); font-size: 1.15rem; line-height: 1.9;
+  max-width: 750px; margin: 0 auto; color: var(--color-vintage-text); padding: 0 10px;
+}
+
+/* --- Chapter II: The Ascent (Genesis) --- */
+.vintage-content-row { display: flex; align-items: center; gap: 50px; margin-top: 50px; }
+.vintage-text-block { flex: 1 1 55%; min-width: 0; }
+.vintage-text-block h3 {
+    font-family: var(--font-vintage-subheading); font-size: 1.8rem;
+    color: var(--color-vintage-accent-red); margin-bottom: 0.8em;
+    border-bottom: 1px solid var(--color-vintage-border);
+    padding-bottom: 0.3em; display: inline-block;
+}
+.vintage-image-block { flex: 0 0 40%; max-width: 450px; text-align: center; }
+.vintage-image-frame {
+    padding: 10px; background-color: var(--color-vintage-bg-darker);
+    border: 1px solid var(--color-vintage-border);
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.15), inset 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+}
+.vintage-image-frame img.vintage-image {
+    border: 3px solid var(--color-vintage-bg); box-shadow: none;
+    display: block; width: 100%;
+}
+.image-caption-vintage {
+    font-family: var(--font-vintage-accent); font-size: 0.9rem;
+    color: var(--color-vintage-text); display: block; margin-top: 10px;
+}
+.chapter-genesis .vintage-image-block { position: relative; }
+.chapter-genesis .vintage-image-block::after {
+    content: ''; position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px;
+    background-image: repeating-linear-gradient( -45deg, transparent, transparent 4px, var(--color-vintage-border) 4px, var(--color-vintage-border) 5px );
+    opacity: 0.3; z-index: -1; border-radius: 3px;
+}
+
+/* --- Chapter III: The Legend (Legacy) --- */
+.chapter-legacy { /* Extends .vintage-section .dark-bg-vintage */ }
+.legacy-content { /* Extends .vintage-content-row */ }
+.legacy-text h3 {
+    font-family: var(--font-vintage-subheading); font-size: 1.8rem;
+    color: var(--color-vintage-accent-gold); margin-bottom: 0.8em;
+    border-bottom: 1px solid var(--color-vintage-border);
+    padding-bottom: 0.3em; display: inline-block;
+}
+.legacy-image-wrapper { flex-basis: 40%; max-width: 450px; }
+.vintage-image-frame.decorative {
+    border: 8px solid var(--color-vintage-bg); padding: 15px;
+    box-shadow: 0 0 0 1px var(--color-vintage-accent-gold), 8px 8px 20px rgba(0,0,0,0.3);
+    background-color: var(--color-vintage-accent-gold);
+}
+.vintage-image-frame.decorative img.vintage-image { border: 4px solid var(--color-vintage-bg-darker); }
+.vintage-cta-button {
+    display: inline-block; padding: 12px 25px; font-family: var(--font-vintage-accent);
+    font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase;
+    background-color: var(--color-vintage-accent-gold); color: var(--color-vintage-bg);
+    border: 1px solid var(--color-vintage-accent-gold); border-radius: 2px;
+    margin-top: 20px; transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+.vintage-cta-button:hover {
+    background-color: var(--color-vintage-bg); color: var(--color-vintage-accent-gold);
+    transform: translateY(-2px); box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+}
+.vintage-cta-button.outline {
+    background-color: transparent; color: var(--color-vintage-accent-gold);
+    border: 1px solid var(--color-vintage-accent-gold);
+}
+.vintage-cta-button.outline:hover { background-color: var(--color-vintage-accent-gold); color: var(--color-vintage-bg); }
+.dark-bg-vintage .vintage-cta-button.outline {
+    color: var(--color-vintage-accent-gold); border-color: var(--color-vintage-accent-gold);
+}
+.dark-bg-vintage .vintage-cta-button.outline:hover {
+    background-color: var(--color-vintage-accent-gold); color: var(--color-vintage-bg-darker);
+}
+
+/* --- Chapter IV: The Arsenal --- */
+.chapter-arsenal { /* Extends .vintage-section */ }
+.arsenal-cards-vintage {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px; margin-top: 40px;
+}
+@media (min-width: 992px) { .arsenal-cards-vintage { grid-template-columns: repeat(4, 1fr); } }
+.arsenal-card-vintage {
+    background-color: var(--color-vintage-bg-darker); padding: 20px;
+    border: 1px solid var(--color-vintage-border); text-align: center;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.arsenal-card-vintage:hover { transform: translateY(-6px); box-shadow: 4px 6px 12px rgba(0,0,0,0.15); }
+.arsenal-icon-vintage {
+    width: 60px; height: 60px; margin: 0 auto 10px auto;
+    border-radius: 50%; overflow: hidden;
+    border: 2px solid var(--color-vintage-accent-red);
+    background-color: var(--color-vintage-bg); padding: 3px;
+}
+.arsenal-icon-vintage img {
+    width: 100%; height: 100%; object-fit: cover;
+    border-radius: 50%; border: none; box-shadow: none;
+}
+.arsenal-card-vintage h4 {
+    font-family: var(--font-vintage-heading); font-size: 1.2rem;
+    color: var(--color-vintage-accent-red); margin-bottom: 6px;
+}
+.arsenal-card-vintage p { font-size: 0.8rem; line-height: 1.4; color: var(--color-vintage-text); }
+
+/* --- Chapter V: The Records (Milestones) --- */
+.chapter-records { /* Extends .vintage-section .dark-bg-vintage */ }
+.milestones-ledger-vintage {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px 25px; margin-bottom: 50px; padding: 15px;
+    border: 1px solid var(--color-vintage-border);
+    background-color: rgba(245, 245, 220, 0.03);
+}
+@media (min-width: 992px) { .milestones-ledger-vintage { grid-template-columns: repeat(4, 1fr); } }
+.milestone-entry-vintage {
+    padding: 12px 8px; border-bottom: 1px dashed var(--color-vintage-border);
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+@media (min-width: 992px) {
+    .milestones-ledger-vintage .milestone-entry-vintage { border-bottom: none; }
+    .milestones-ledger-vintage .milestone-entry-vintage:not(:nth-child(4n)) {
+        border-right: 1px dashed var(--color-vintage-border); padding-right: 20px;
+    }
+}
+@media (max-width: 991px) and (min-width: 500px) {
+    .milestones-ledger-vintage .milestone-entry-vintage:nth-child(odd) {
+        border-right: 1px dashed var(--color-vintage-border); padding-right: 15px;
+    }
+    .milestones-ledger-vintage .milestone-entry-vintage:nth-child(even) { padding-right: 0; border-right: none; }
+    .milestones-ledger-vintage .milestone-entry-vintage:nth-last-child(-n+2) { border-bottom: none; }
+}
+@media (max-width: 499px) {
+    .milestones-ledger-vintage .milestone-entry-vintage:not(:last-child) { border-bottom: 1px dashed var(--color-vintage-border); }
+    .milestones-ledger-vintage .milestone-entry-vintage:last-child { border-bottom: none; }
+}
+.vintage-counter.number {
+    font-family: var(--font-vintage-heading); font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 900; color: var(--color-vintage-accent-gold);
+    line-height: 1; margin-bottom: 3px;
+}
+.vintage-counter.text-stat {
+    font-family: var(--font-vintage-subheading); font-size: 1.1rem;
+    font-weight: 700; color: var(--color-vintage-accent-gold);
+    line-height: 1.2; margin-bottom: 3px;
+}
+.milestone-entry-vintage .label {
+    font-family: var(--font-vintage-accent); font-size: 0.85rem;
+    color: var(--color-vintage-text);
+}
+.vintage-image-block.centered-image.record-image { max-width: 600px; margin: 30px auto 0 auto; }
+
+/* --- Chapter VI: The Unyielding Spirit --- */
+.chapter-spirit { /* Extends .vintage-section */ }
+.vintage-subsection { margin-bottom: 80px; }
+.vintage-subsection:last-child { margin-bottom: 0; }
+.vintage-subsection-title {
+    font-family: var(--font-vintage-heading); font-size: 1.6rem;
+    color: var(--color-vintage-accent-red); text-align: center; margin-bottom: 30px;
+    text-transform: uppercase; letter-spacing: 1px; position: relative; padding-bottom: 10px;
+}
+.vintage-subsection-title::after {
+    content: ''; position: absolute; bottom: 0; left: 50%;
+    transform: translateX(-50%); width: 60px; height: 2px;
+    background-color: var(--color-vintage-accent-red);
+}
+.vintage-quote {
+    display: block; font-family: var(--font-vintage-subheading);
+    font-style: italic; font-size: 1.1rem; margin-top: 20px;
+    padding-left: 20px; border-left: 3px solid var(--color-vintage-accent-gold);
+    color: var(--color-vintage-text);
+}
+.vintage-image-frame.circular { border-radius: 50%; overflow: hidden; padding: 8px; }
+.vintage-image-frame.circular img.vintage-image { border-radius: 50%; border-width: 2px; }
+.vintage-spacer {
+    height: 1px; background-color: var(--color-vintage-border);
+    opacity: 0.5; width: 80%; margin: 70px auto;
+}
+
+/* --- Chapter VII: Iconic Moments (Gallery) --- */
+.chapter-gallery { /* Extends .vintage-section .dark-bg-vintage */ }
+.gallery-grid-vintage {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px; margin-bottom: 40px;
+}
+@media (min-width: 992px) { .gallery-grid-vintage { grid-template-columns: repeat(3, 1fr); } }
+.gallery-item-vintage {
+    position: relative; overflow: hidden; border: 5px solid var(--color-vintage-bg);
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
+    aspect-ratio: 4/3; background-color: var(--color-vintage-bg-darker);
+}
+.gallery-image-vintage {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s ease, filter 0.5s ease;
+    border: none !important; box-shadow: none !important;
+}
+.gallery-item-vintage:hover .gallery-image-vintage { transform: scale(1.1); filter: sepia(0.3) brightness(0.8); }
+.gallery-overlay-vintage {
+    position: absolute; bottom: 0; left: 0; width: 100%; padding: 15px;
+    background: linear-gradient(to top, rgba(44, 27, 14, 0.85) 0%, transparent 100%);
+    opacity: 0; transform: translateY(15px);
+    transition: opacity 0.4s ease, transform 0.4s ease; text-align: center;
+}
+.gallery-item-vintage:hover .gallery-overlay-vintage { opacity: 1; transform: translateY(0); }
+.gallery-text-vintage {
+    font-family: var(--font-vintage-accent); font-size: 1.2rem;
+    color: var(--color-vintage-bg); text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* --- Chapter VIII: Beyond the Crease --- */
+.chapter-beyond { /* Extends .vintage-section */ }
+.vintage-image-frame.decorative-alt {
+    border: 1px solid var(--color-vintage-border); padding: 8px;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.1); background-color: var(--color-vintage-bg);
+}
+.vintage-image-frame.decorative-alt img.vintage-image { border: none; }
+
+/* --- Chapter IX: Words of Wisdom (Quotes Section on Home Page) --- */
+/* In Home.css */
+
+/* ... (all other styles for other chapters) ... */
+
+/* --- Chapter IX: Words of Wisdom (Quotes Section on Home Page) --- */
+.chapter-quotes {
+    /* This class itself might not need specific background styling if it uses the page default,
+       or if it's .dark-bg-vintage, that class handles it. */
+}
+
+.quotes-container-home {
+    max-width: 750px;
+    margin: 40px auto 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 50px;
+}
+
+@media (min-width: 768px) {
+    .quotes-container-home.two-columns {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+.vintage-inspirational-quote-home {
+    font-family: var(--font-vintage-subheading);
+    font-size: 1.3rem;
+    line-height: 1.8;
+    /* BACKGROUND of the quote block itself */
+    background-color: var(--color-vintage-bg-darker); /* Or the rgba(0,0,0,0.15) if that was preferred */
+    /* If you used background-color: rgba(0,0,0,0.1) on a .dark-bg-vintage section,
+       and now this section has a light background, then rgba(0,0,0,0.1) on a light bg
+       will be very light. So, explicitly use a color like --color-vintage-bg-darker
+       which is your muted beige. */
+    padding: 25px 30px;
+    margin: 0;
+    position: relative;
+    border: 1px dashed var(--color-vintage-accent-gold);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Soften shadow a bit if bg is lighter */
+}
+
+.vintage-inspirational-quote-home::before {
+    content: '“';
+    font-family: var(--font-vintage-heading);
+    font-size: 6rem;
+    color: var(--color-vintage-accent-gold);
+    opacity: 0.3; /* Increased opacity for better visibility of quote mark */
+    position: absolute;
+    left: 15px;
+    top: 5px;
+    line-height: 0.8;
+    z-index: 0;
+    user-select: none;
+    pointer-events: none;
+}
+
+.vintage-inspirational-quote-home p {
+    margin-bottom: 0.8em;
+    position: relative;
+    z-index: 1;
+    /* THIS IS THE KEY FIX: Text inside the quote block should be dark */
+    color: var(--color-vintage-text); /* Use your primary dark text color */
+}
+
+.vintage-inspirational-quote-home footer {
+    font-family: var(--font-vintage-accent);
+    font-size: 1rem;
+    /* Author can be accent color or standard dark text */
+    color: var(--color-vintage-accent-red); /* Or var(--color-vintage-text) */
+    text-align: right;
+    display: block;
+    margin-top: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive for Quotes on Home */
+@media (max-width: 768px) {
+  .quotes-container-home.two-columns {
+    grid-template-columns: 1fr;
+  }
+  .vintage-inspirational-quote-home {
+    font-size: 1.2rem;
+    padding: 20px;
+  }
+  .vintage-inspirational-quote-home::before {
+    font-size: 5rem;
+    left: 10px;
+    top: 0px;
+  }
+}
+
+@media (max-width: 480px) {
+  .vintage-inspirational-quote-home {
+    font-size: 1.1rem;
+    padding: 15px;
+  }
+  .vintage-inspirational-quote-home::before {
+    font-size: 4rem;
+    left: 5px;
+  }
+}
+
+/* --- AOS Fallback & General Animation Helpers --- */
+/* These are from your original CSS - review if they conflict with AOS or enhance it */
+/* .animate-on-visible classes might not be needed if AOS handles all animations */
+
+/* --- Responsiveness --- */
+@media (max-width: 1024px) {
+  :root { --section-padding-vintage: 80px 0; }
+  .vintage-section-title { font-size: clamp(2rem, 4.5vw, 3rem); }
+  .vintage-content-row { flex-direction: column !important; text-align: center; }
+  .vintage-text-block { text-align: center; margin-bottom: 40px; width: 100%; flex-basis: auto !important; }
+  .vintage-image-block, .legacy-image-wrapper, .passion-image-container {
+    flex-basis: auto !important; width: auto; max-width: 80%; margin: 0 auto 30px auto;
+  }
+  .chapter-beyond .vintage-image-container {
+    max-width: 70%; padding-left: 0; border-left: none;
+    padding-top: 20px; border-top: 3px solid var(--color-vintage-accent-red);
+  }
+   .chapter-beyond .vintage-image-container::before { display: none; }
+  .vintage-quote {
+    margin-left: auto; margin-right: auto; border-left: none;
+    border-top: 2px solid var(--color-vintage-accent-gold);
+    padding-left:0; padding-top: 15px; max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  :root { --section-padding-vintage: 60px 0; }
+  .hero-title-vintage { font-size: clamp(3rem, 12vw, 5.5rem); letter-spacing: -1px; }
+  .hero-subtitle-vintage { font-size: clamp(1.5rem, 5vw, 2.2rem); }
+  .vintage-cta-button { padding: 10px 20px; font-size: 1rem; }
+  .vintage-image-block, .legacy-image-wrapper, .passion-image-container { max-width: 90%; }
+  .passion-image-container { width: 300px !important; height: 300px !important; flex-basis: 300px !important; }
+  .arsenal-cards-vintage { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .milestones-ledger-vintage { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .milestones-ledger-vintage .milestone-entry-vintage:nth-child(odd) { border-right: 1px dashed var(--color-vintage-border); padding-right: 15px; }
+  .milestones-ledger-vintage .milestone-entry-vintage:nth-child(even) { padding-right: 0; border-right: none; }
+  .quotes-container-home.two-columns { grid-template-columns: 1fr; } /* Stack quotes on tablet */
+}
+
+@media (max-width: 480px) {
+  .hero-title-vintage { font-size: clamp(2.5rem, 15vw, 4rem); }
+  .hero-subtitle-vintage { font-size: clamp(1.3rem, 6vw, 1.8rem); }
+  .vintage-section-title { font-size: clamp(1.8rem, 6vw, 2.5rem); }
+  .vintage-cta-button { width: 80%; display: block; margin: 20px auto; }
+  .vintage-intro-text { font-size: 1.05rem; }
+  p { font-size: 0.95rem; }
+  .vintage-image-block, .legacy-image-wrapper, .passion-image-container { max-width: 95%; }
+  .passion-image-container { width: 250px !important; height: 250px !important; flex-basis: 250px !important; }
+  .arsenal-cards-vintage { grid-template-columns: 1fr; }
+  .milestones-ledger-vintage { grid-template-columns: 1fr; }
+  .milestones-ledger-vintage .milestone-entry-vintage { border-right: none !important; padding-right: 8px !important; }
+  .milestones-ledger-vintage .milestone-entry-vintage:not(:last-child) { border-bottom: 1px dashed var(--color-vintage-border); }
+  .milestones-ledger-vintage .milestone-entry-vintage:last-child { border-bottom: none; }
+  .vintage-inspirational-quote-home { font-size: 1.1rem; padding: 15px; }
+  .vintage-inspirational-quote-home::before { font-size: 4rem; }
+}

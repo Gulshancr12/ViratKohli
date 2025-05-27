@@ -1,0 +1,360 @@
+/* --- ABOUT PAGE VINTAGE STYLES --- */
+/* Ensure :root variables from your main vintage CSS (e.g., Home.css) are available */
+/* Example :root variables needed:
+:root {
+  --font-vintage-heading: 'Playfair Display', serif;
+  --font-vintage-subheading: 'Merriweather', serif;
+  --font-vintage-body: 'Merriweather', serif;
+  --font-vintage-accent: 'Special Elite', cursive;
+  --color-vintage-bg: #f5f5dc;
+  --color-vintage-bg-darker: #e0d8c0;
+  --color-vintage-text: #3a2414;
+  --color-vintage-heading-text: #2c1b0e;
+  --color-vintage-accent-gold: #8c7853;
+  --color-vintage-accent-red: #7a2f2f;
+  --color-vintage-border: #c8bca8;
+  --container-width-vintage: 1100px;
+}
+*/
+
+.about-page-vintage {
+  background-color: var(--color-vintage-bg);
+  color: var(--color-vintage-text);
+  padding-top: 85px; /* Account for fixed navbar height, adjust if your navbar height differs */
+  position: relative; /* For texture overlay */
+  overflow-x: hidden; /* Prevent horizontal scroll from AOS or other elements */
+}
+
+/* If .page-texture-overlay is not global from Home.css, define it: */
+/*
+.page-texture-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../assets/paper-texture-light.png');
+    background-repeat: repeat;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: -1;
+}
+*/
+
+/* If .container.vintage-container is not global, define it: */
+/*
+.container.vintage-container {
+  width: 90%;
+  max-width: var(--container-width-vintage, 1100px);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+*/
+
+
+/* --- About Hero/Header --- */
+.about-hero-vintage {
+  height: 60vh;
+  min-height: 400px;
+  /* IMPORTANT: Replace with path to your actual background image for the About hero */
+  background-image: url('../../assets/kohli-hero-bg.jpg'); /* Using existing heroBgImage as placeholder */
+  background-size: cover;
+  background-position: center 30%;
+  background-attachment: scroll; /* 'fixed' can cause issues on mobile sometimes */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  color: var(--color-vintage-bg);
+  margin-bottom: 80px;
+}
+
+.about-hero-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to bottom, rgba(42, 27, 14, 0.4) 0%, rgba(42, 27, 14, 0.8) 100%);
+  z-index: 1;
+}
+
+.about-hero-vintage .container.vintage-container {
+  position: relative;
+  z-index: 2;
+}
+
+.about-hero-title {
+  font-family: var(--font-vintage-heading);
+  font-weight: 900;
+  font-size: clamp(2.8rem, 7vw, 4.5rem);
+  color: var(--color-vintage-bg);
+  text-shadow: 2px 2px 0px var(--color-vintage-accent-gold), 3px 3px 5px rgba(0,0,0,0.4);
+  margin-bottom: 0.3em;
+}
+
+.about-hero-subtitle {
+  font-family: var(--font-vintage-subheading);
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: var(--color-vintage-bg-darker);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* --- Main Content Area --- */
+.about-content-vintage {
+  padding-bottom: 80px; /* Space before footer */
+}
+
+.about-section-item {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+  margin-bottom: 80px;
+}
+.about-section-item.alt-row {
+  flex-direction: row-reverse;
+}
+
+/* Styles for .vintage-text-block, .vintage-image-block, .vintage-image-frame,
+   img.vintage-image, img.vintage-image.with-grain
+   are assumed to be defined in your global vintage CSS (e.g., Home.css)
+   If not, you need to copy those style definitions here. Example:
+*/
+.vintage-text-block {
+  flex: 1 1 60%;
+  min-width: 0;
+}
+.vintage-text-block h3 { /* Assuming h3 inside text block for sub-sections */
+    font-family: var(--font-vintage-subheading);
+    font-size: 1.8rem;
+    color: var(--color-vintage-accent-red);
+    margin-bottom: 0.8em;
+    border-bottom: 1px solid var(--color-vintage-border);
+    padding-bottom: 0.3em;
+    display: inline-block;
+}
+
+.vintage-image-block {
+  flex: 0 0 35%;
+  max-width: 400px;
+  margin-top: 10px; /* Slight top margin for visual balance */
+  text-align: center; /* For caption */
+}
+.vintage-image-block.standout-image {
+    max-width: 450px;
+}
+.vintage-image-frame {
+    padding: 10px;
+    background-color: var(--color-vintage-bg-darker);
+    border: 1px solid var(--color-vintage-border);
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.15), inset 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+}
+.vintage-image-frame.decorative { /* Specific frame style */
+    border: 8px solid var(--color-vintage-bg);
+    padding: 15px;
+    box-shadow: 0 0 0 1px var(--color-vintage-accent-gold), 8px 8px 20px rgba(0,0,0,0.3);
+    background-color: var(--color-vintage-accent-gold);
+}
+.vintage-image-frame.decorative img.vintage-image {
+    border: 4px solid var(--color-vintage-bg-darker);
+}
+img.vintage-image { /* Base style for images with class="vintage-image" */
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border: 5px solid var(--color-vintage-bg-darker);
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+}
+.vintage-image-frame img.vintage-image { /* Image inside a frame */
+    border: 3px solid var(--color-vintage-bg);
+    box-shadow: none;
+    display: block;
+    width: 100%;
+}
+img.vintage-image.with-grain {
+    position: relative;
+}
+img.vintage-image.with-grain::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('../../assets/film-grain-overlay.jpg'); /* PROVIDE THIS TEXTURE */
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 1;
+}
+.image-caption-vintage {
+    font-family: var(--font-vintage-accent);
+    font-size: 0.9rem;
+    color: var(--color-vintage-text);
+    display: block;
+    margin-top: 10px;
+}
+
+
+/* Specific small title for sections within the About page */
+.vintage-section-title-small {
+  font-family: var(--font-vintage-heading);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  color: var(--color-vintage-accent-red);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.vintage-section-title-small.alt-color {
+  color: var(--color-vintage-accent-gold);
+}
+
+.vintage-divider-small {
+  width: 70px;
+  height: 2px;
+  background-color: var(--color-vintage-accent-red);
+  margin-bottom: 25px;
+}
+.vintage-divider-small.alt-color {
+  background-color: var(--color-vintage-accent-gold);
+}
+
+.about-section-item p {
+  font-family: var(--font-vintage-body);
+  font-size: 1.05rem;
+  line-height: 1.9;
+  margin-bottom: 1.5em;
+  color: var(--color-vintage-text);
+}
+
+.vintage-quote-page {
+    display: block;
+    font-family: var(--font-vintage-subheading);
+    font-style: italic;
+    font-size: 1.2rem;
+    margin: 30px 0 20px 30px;
+    padding: 15px 20px;
+    border-left: 4px solid var(--color-vintage-accent-gold);
+    background-color: rgba(224, 216, 192, 0.2);
+    color: var(--color-vintage-text);
+    position: relative;
+}
+.vintage-quote-page::before {
+    content: '“';
+    font-family: var(--font-vintage-heading);
+    font-size: 4rem;
+    color: var(--color-vintage-accent-gold);
+    opacity: 0.2;
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    line-height: 1;
+}
+
+.vintage-spacer-page {
+    height: 2px;
+    background-image: linear-gradient(to right, transparent, var(--color-vintage-border) 30%, var(--color-vintage-border) 70%, transparent);
+    opacity: 0.6;
+    width: 100%;
+    margin: 80px auto;
+}
+
+/* --- ABOUT PAGE - INTEGRATED FOOTER STYLES --- */
+.footer-vintage-about {
+  padding: 60px 0 40px;
+  text-align: center;
+  background-color: var(--color-vintage-bg-darker);
+  border-top: 2px solid var(--color-vintage-border);
+  color: var(--color-vintage-text);
+  margin-top: 60px; /* Ensure some space if content ends abruptly before footer */
+}
+
+.footer-signature-wrapper-vintage {
+  margin-bottom: 25px;
+}
+
+.footer-signature-vintage {
+  max-width: 180px;
+  margin: 0 auto;
+  filter: contrast(1.1) brightness(0.8) sepia(0.2);
+  /* If your signature image has a white background and is dark text:
+     Example filter for better visibility on vintage-bg-darker:
+     filter: invert(1) brightness(0.6) sepia(0.5) contrast(1.5);
+     mix-blend-mode: screen; // if the footer BG is dark enough
+     Or, preferably, use a signature image with a transparent background.
+  */
+}
+
+.footer-text-vintage {
+  font-family: var(--font-vintage-accent);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+
+.footer-social-vintage a {
+  font-family: var(--font-vintage-accent);
+  font-size: 0.9rem;
+  margin: 0 10px;
+  color: var(--color-vintage-text);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-social-vintage a:hover {
+  color: var(--color-vintage-accent-red);
+}
+
+
+/* Responsive adjustments for About Page */
+@media (max-width: 960px) {
+  .about-hero-vintage {
+    height: 50vh;
+    min-height: 350px;
+    margin-bottom: 60px;
+  }
+  .about-page-vintage {
+    padding-top: 75px; /* Adjust if your scrolled navbar height changes */
+  }
+  .about-section-item,
+  .about-section-item.alt-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .vintage-text-block {
+    order: 2;
+    width: 100%;
+    text-align: justify; /* Keep text justified for readability */
+  }
+   .vintage-text-block h3 { /* Center heading in stacked view */
+    display: block; text-align: center; border-bottom: none;
+  }
+   .vintage-text-block h3::after { /* Add underline via pseudo-element */
+    content: ''; display: block; width: 60px; height: 1px;
+    background: var(--color-vintage-accent-red); margin: 8px auto 0;
+  }
+  .vintage-image-block {
+    order: 1;
+    margin-bottom: 30px;
+    width: 80%;
+    max-width: 400px;
+  }
+  .vintage-section-title-small,
+  .vintage-divider-small {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .vintage-quote-page {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left; /* Keep quote text left-aligned */
+  }
+}
+
+@media (max-width: 600px) {
+  .about-hero-title { font-size: clamp(2.2rem, 8vw, 3.5rem); }
+  .about-hero-subtitle { font-size: clamp(1rem, 4vw, 1.3rem); }
+  .vintage-section-title-small { font-size: clamp(1.6rem, 5vw, 2rem); }
+  .about-section-item p { font-size: 1rem; }
+  .vintage-quote-page { font-size: 1.1rem; }
+  .vintage-text-block { text-align: left; } /* For better readability on small mobile */
+  .vintage-text-block h3::after { margin: 8px 0 0; } /* Align underline left */
+}

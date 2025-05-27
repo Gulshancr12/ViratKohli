@@ -1,0 +1,342 @@
+/* --- HIGHLIGHT PAGE STYLES --- */
+/* Assumes :root variables for colors/fonts are defined globally */
+
+.highlight-page {
+  background-color: var(--color-dark-primary, #101010);
+  color: var(--color-text-light, #f0f0f0);
+  padding-top: 85px; /* Adjust if navbar height is different */
+  overflow-x: hidden;
+  font-family: var(--font-primary, 'Roboto', sans-serif);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.section-title-highlight {
+  font-family: var(--font-display, 'Bebas Neue', cursive);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  text-align: center;
+  color: var(--color-red-accent, #ff003c);
+  margin-bottom: 60px;
+  text-transform: uppercase;
+  letter-spacing: 3px; /* Increased letter spacing */
+  font-weight: 700; /* Ensure display font is bold */
+  text-shadow: 0 0 8px var(--color-red-accent, #ff003c),
+               0 0 15px rgba(255, 0, 60, 0.6), /* Softer glow */
+               0 0 25px rgba(255, 0, 60, 0.4);
+}
+
+/* Glassmorphism Helper */
+.glassmorphic {
+  background: rgba(30, 30, 30, 0.55); /* Slightly lighter, more translucent */
+  backdrop-filter: blur(15px); /* Increased blur */
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 18px; /* Softer radius */
+  border: 1px solid rgba(218, 165, 32, 0.15); /* More subtle gold border */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45); /* More pronounced shadow */
+}
+
+/* Hero Quote Section */
+.highlight-hero-quote {
+  min-height: 50vh; /* Increased min-height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 20px; /* Increased padding */
+  background: linear-gradient(145deg, rgba(16,16,16,0.9) 0%, rgba(26,26,26,0.8) 100%),
+              url('../../assets/kohli-trophy.jpg') center center/cover no-repeat; /* Example: Use an actual BG image */
+  position: relative;
+  border-bottom: 2px solid var(--color-gold-accent, #daa520);
+}
+.kohli-inspiring-quote {
+  font-family: var(--font-primary, 'Merriweather', serif); /* More elegant font */
+  font-size: clamp(2rem, 4.5vw, 3.2rem); /* Larger quote */
+  font-weight: 700; /* Bolder quote */
+  color: var(--color-text-light, #f0f0f0);
+  max-width: 850px;
+  margin: 0 auto;
+  line-height: 1.6;
+  position: relative;
+  padding: 30px;
+  text-shadow: 0 3px 15px rgba(0,0,0,0.6);
+  z-index: 1; /* Ensure quote is above potential pseudo-elements of parent */
+}
+.kohli-inspiring-quote::before,
+.kohli-inspiring-quote::after {
+  content: '“';
+  font-family: var(--font-display, 'Playfair Display', serif); /* More decorative font for quotes */
+  font-size: 7rem; /* Larger quote marks */
+  color: var(--color-gold-accent, #daa520);
+  opacity: 0.25; /* More subtle */
+  position: absolute;
+  line-height: 0.5; /* Adjust vertical alignment */
+  z-index: -1; /* Behind the text */
+}
+.kohli-inspiring-quote::before { top: -15px; left: -30px; }
+.kohli-inspiring-quote::after { content: '”'; bottom: -50px; right: -30px; }
+
+.kohli-inspiring-quote cite {
+  display: block;
+  font-family: var(--font-primary, 'Merriweather', serif);
+  font-size: 1.2rem; /* Larger cite */
+  color: var(--color-gold-accent, #daa520);
+  margin-top: 25px;
+  font-style: italic; /* Italicize cite */
+  font-weight: 500;
+}
+
+/* Stats Showcase Section */
+.stats-showcase-section {
+  padding: 100px 0; /* Increased padding */
+  background-color: var(--color-dark-secondary, #1a1a1a);
+  border-top: 1px solid rgba(218, 165, 32, 0.1);
+  border-bottom: 1px solid rgba(218, 165, 32, 0.1);
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Slightly larger minmax */
+  gap: 35px; /* Increased gap */
+}
+.stat-card {
+  padding: 35px; /* Increased padding */
+  text-align: center;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease; /* Bouncier transition */
+}
+.stat-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 20px 50px 0 rgba(218, 165, 32, 0.25);
+}
+.stat-value-neon {
+  font-family: var(--font-display, 'Orbitron', sans-serif);
+  font-size: clamp(3.8rem, 9vw, 5.5rem); /* Larger neon numbers */
+  font-weight: 700;
+  color: var(--color-red-accent, #ff003c);
+  text-shadow: 0 0 6px var(--color-red-accent, #ff003c),
+               0 0 12px var(--color-red-accent, #ff003c),
+               0 0 20px rgba(255, 0, 60, 0.8),
+               0 0 30px rgba(255, 0, 60, 0.6),
+               0 0 40px rgba(255, 0, 60, 0.4); /* Enhanced neon glow */
+  margin-bottom: 12px;
+  line-height: 1;
+}
+.stat-label {
+  font-family: var(--font-primary, sans-serif);
+  font-size: 1.15rem; /* Slightly larger label */
+  color: var(--color-text-medium, #a0a0a0);
+  text-transform: uppercase;
+  letter-spacing: 1.5px; /* Wider spacing */
+}
+
+/* Vertical Timeline Section */
+.timeline-section {
+  padding: 100px 0;
+  position: relative;
+  background-color: var(--color-dark-primary, #101010);
+}
+.timeline-section::before {
+  content: ''; position: absolute; top: 0; left: 50%;
+  transform: translateX(-50%); width: 5px; /* Thicker line */
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--color-gold-accent, #daa520) 20%, var(--color-red-accent, #ff003c) 50%, var(--color-gold-accent, #daa520) 80%, transparent);
+  opacity: 0.4; z-index: 0;
+  box-shadow: 0 0 10px var(--color-gold-accent); /* Glow for timeline */
+}
+.vertical-timeline { position: relative; max-width: 900px; margin: 0 auto; }
+.timeline-item {
+  padding: 15px 45px; position: relative; width: 50%;
+  box-sizing: border-box; margin-bottom: 60px;
+}
+.timeline-item:nth-child(odd) { left: 0; }
+.timeline-item:nth-child(even) { left: 50%; }
+
+.timeline-item:nth-child(odd) .timeline-content::after {
+  content: ''; position: absolute; top: 25px; right: -18px; /* Adjusted for thicker arrow */
+  border-width: 12px; border-style: solid;
+  border-color: transparent transparent transparent rgba(218, 165, 32, 0.25); /* Border color of glass card */
+}
+.timeline-item:nth-child(even) .timeline-content::after {
+  content: ''; position: absolute; top: 25px; left: -18px;
+  border-width: 12px; border-style: solid;
+  border-color: transparent rgba(218, 165, 32, 0.25) transparent transparent;
+}
+.timeline-icon {
+  position: absolute; width: 55px; height: 55px; /* Larger icon */
+  border-radius: 50%; background-color: var(--color-red-accent, #ff003c);
+  color: var(--color-text-light, #f0f0f0); display: flex; align-items: center;
+  justify-content: center; font-size: 1.8rem; /* Larger icon font/emoji */
+  top: 20px; z-index: 1; border: 4px solid var(--color-gold-accent, #daa520);
+  box-shadow: 0 0 0 5px var(--color-red-accent, #ff003c), 0 0 20px var(--color-red-accent, #ff003c);
+  transition: transform 0.3s ease;
+}
+.timeline-item:hover .timeline-icon {
+    transform: scale(1.1);
+}
+.timeline-item:nth-child(odd) .timeline-icon { right: -27.5px; /* Half of 55px */ }
+.timeline-item:nth-child(even) .timeline-icon { left: -27.5px; }
+
+.timeline-content {
+  padding: 25px 35px; /* More padding */
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+.timeline-content:hover {
+    transform: scale(1.03) translateY(-5px);
+    box-shadow: 0 12px 38px 0 rgba(218, 165, 32, 0.2); /* Enhanced gold shadow on hover */
+}
+.timeline-year {
+  display: inline-block; padding: 6px 12px;
+  background-color: var(--color-gold-accent, #daa520);
+  color: var(--color-dark-primary, #101010);
+  font-family: var(--font-display, sans-serif);
+  font-weight: 700; border-radius: 5px; margin-bottom: 12px;
+  font-size: 1rem; /* Larger year tag */
+}
+.timeline-title {
+  font-family: var(--font-primary, sans-serif); font-size: 1.6rem; /* Larger title */
+  color: var(--color-red-accent, #ff003c); margin-bottom: 10px;
+  font-weight: 700;
+}
+.timeline-description { font-size: 1rem; color: var(--color-text-medium, #a0a0a0); line-height: 1.7; }
+
+/* Video Carousel Section */
+.video-carousel-section { padding: 100px 0; background-color: var(--color-dark-secondary, #1a1a1a); }
+.kohli-video-swiper { width: 100%; padding-top: 40px; padding-bottom: 60px; }
+.video-swiper-slide {
+  background-position: center; background-size: cover;
+  width: 350px; /* Slightly wider slides */
+  height: auto;
+  display: flex; justify-content: center; align-items: center;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4)); /* Add drop shadow to slide */
+}
+.video-wrapper {
+  width: 100%; aspect-ratio: 16 / 9; overflow: hidden;
+  border-radius: 12px; padding: 10px; /* Increased padding */
+  position: relative;
+  transition: transform 0.4s ease;
+}
+.video-swiper-slide:hover .video-wrapper {
+    transform: scale(1.05); /* Zoom effect on slide hover */
+}
+.video-wrapper iframe { border-radius: 8px; width: 100%; height: 100%; }
+.video-slide-title {
+    position: absolute; bottom: 10px; left: 10px; right: 10px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 50%, transparent 100%); /* Gradient bg for title */
+    color: var(--color-text-light); padding: 12px 15px; /* More padding */
+    font-size: 1rem; text-align: center;
+    border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;
+    opacity: 0; transition: opacity 0.4s ease;
+    font-family: var(--font-primary); font-weight: 600;
+}
+.video-swiper-slide:hover .video-slide-title { opacity: 1; }
+
+.kohli-video-swiper .swiper-button-next, .kohli-video-swiper .swiper-button-prev {
+  color: var(--color-gold-accent, #daa520) !important;
+  transition: transform 0.3s ease, color 0.3s ease;
+  --swiper-navigation-size: 30px; /* Smaller nav arrows */
+}
+.kohli-video-swiper .swiper-button-next:hover, .kohli-video-swiper .swiper-button-prev:hover {
+    transform: scale(1.3); color: var(--color-red-accent, #ff003c);
+}
+.kohli-video-swiper .swiper-pagination-bullet-active { background: var(--color-red-accent, #ff003c) !important; }
+.kohli-video-swiper .swiper-pagination-bullet { background: var(--color-gold-accent, #daa520); opacity: 0.8; }
+
+/* Masonry Image Gallery for Highlights */
+.gallery-highlights-section { padding: 100px 0; background-color: var(--color-dark-primary); }
+.highlight-gallery-grid { column-count: 3; column-gap: 20px; /* Increased gap */ }
+.highlight-gallery-item {
+  display: inline-block; width: 100%; margin-bottom: 20px;
+  break-inside: avoid-column; position: relative; overflow: hidden;
+  border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  cursor: pointer; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+.highlight-gallery-item:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(218, 165, 32, 0.35);
+}
+.highlight-gallery-image { width: 100%; height: auto; display: block; transition: transform 0.6s ease; }
+.highlight-gallery-item:hover .highlight-gallery-image { transform: scale(1.1); }
+.highlight-gallery-overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to top, rgba(255,0,60,0.7) 0%, transparent 60%);
+  opacity: 0; display: flex; align-items: flex-end; justify-content: flex-end;
+  padding: 20px; transition: opacity 0.5s ease;
+}
+.highlight-gallery-item:hover .highlight-gallery-overlay { opacity: 1; }
+.overlay-icon {
+  font-size: 2.5rem; /* Larger icon */
+  color: var(--color-gold-accent, #daa520);
+  text-shadow: 0 0 10px var(--color-gold-accent), 0 0 5px #fff; /* Brighter glow */
+}
+
+/* Lightbox Modal for Gallery Highlights */
+.highlight-lightbox-modal {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(10, 10, 10, 0.96); /* Even darker */
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10000; padding: 20px; box-sizing: border-box;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+}
+.highlight-lightbox-content {
+  position: relative; display: flex; align-items: center; justify-content: center;
+  max-width: 92vw; max-height: 92vh; /* Slightly larger max */
+  box-sizing: border-box; cursor: default;
+}
+.highlight-lightbox-image-wrapper {
+  position: relative; display: inline-block;
+  max-width: 100%; max-height: 100%; line-height: 0;
+  padding: 5px; /* Small padding for visual separation if image has no border */
+  background: rgba(20,20,20,0.3); /* Subtle background for the wrapper */
+  border-radius: 8px;
+}
+.highlight-lightbox-image {
+  display: block; max-width: 100%; max-height: 100%;
+  width: auto; height: auto; object-fit: contain;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  border-radius: 6px;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .timeline-item, .timeline-item:nth-child(even) {
+    left: 0; width: 100%; padding-left: 80px; padding-right: 20px;
+  }
+  .timeline-icon { left: 15px !important; } /* Force left for all */
+  .timeline-item:nth-child(odd) .timeline-icon, .timeline-item:nth-child(even) .timeline-icon { left: 15px !important; }
+  .timeline-item:nth-child(odd) .timeline-content::after, .timeline-item:nth-child(even) .timeline-content::after {
+    border-color: transparent rgba(218, 165, 32, 0.25) transparent transparent; left: -18px; right: auto;
+  }
+  .highlight-gallery-grid { column-count: 2; }
+}
+@media (max-width: 768px) {
+  .highlight-page { padding-top: 75px; }
+  .section-title-highlight { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 40px; }
+  .stats-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
+  .stat-value-neon { font-size: clamp(3rem, 7.5vw, 4.5rem); }
+  .timeline-section::before { left: 30px; width: 4px; }
+  .timeline-item, .timeline-item:nth-child(even) { padding-left: 70px; padding-right: 15px; }
+  .timeline-icon { width: 45px; height: 45px; font-size: 1.5rem; left: 12.5px !important; border-width: 3px; box-shadow: 0 0 0 4px var(--color-red-accent, #ff003c), 0 0 15px var(--color-red-accent, #ff003c); }
+  .timeline-item:nth-child(odd) .timeline-icon, .timeline-item:nth-child(even) .timeline-icon { left: 12.5px !important; }
+  .video-swiper-slide { width: 300px; }
+}
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-card { padding: 25px; }
+  .timeline-section::before { left: 25px; width: 3px; }
+  .timeline-item, .timeline-item:nth-child(even) { padding-left: 65px; padding-right: 10px; margin-bottom: 40px;}
+  .timeline-icon { width: 35px; height: 35px; font-size: 1.1rem; left: 12.5px !important; border-width: 2px; box-shadow: 0 0 0 3px var(--color-red-accent, #ff003c), 0 0 10px var(--color-red-accent, #ff003c); }
+  .timeline-item:nth-child(odd) .timeline-icon, .timeline-item:nth-child(even) .timeline-icon { left: 12.5px !important; }
+  .timeline-title { font-size: 1.3rem; }
+  .timeline-description { font-size: 0.9rem; }
+  .highlight-gallery-grid { column-count: 1; gap: 20px; }
+  .video-swiper-slide { width: calc(100% - 20px); } /* Slightly less than full width */
+  .kohli-inspiring-quote::before, .kohli-inspiring-quote::after { font-size: 4.5rem; }
+  .kohli-inspiring-quote::before { left: -15px; top: -10px; }
+  .kohli-inspiring-quote::after { right: -15px; bottom: -35px; }
+}

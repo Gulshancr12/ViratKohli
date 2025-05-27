@@ -1,0 +1,308 @@
+/* --- VINTAGE NAVBAR STYLES --- */
+/* Ensure :root variables from your main vintage CSS are available */
+/* E.g., from your Home.css:
+:root {
+  --font-vintage-heading: 'Playfair Display', serif;
+  --font-vintage-subheading: 'Merriweather', serif;
+  --font-vintage-body: 'Merriweather', serif;
+  --font-vintage-accent: 'Special Elite', cursive;
+  --color-vintage-bg: #f5f5dc;
+  --color-vintage-bg-darker: #e0d8c0;
+  --color-vintage-text: #3a2414;
+  --color-vintage-heading-text: #2c1b0e;
+  --color-vintage-accent-gold: #8c7853;
+  --color-vintage-accent-red: #7a2f2f;
+  --color-vintage-border: #c8bca8;
+}
+*/
+
+.vintage-navbar {
+  background-color: var(--color-vintage-bg-darker);
+  height: 85px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  box-shadow: 0 3px 10px rgba(44, 27, 14, 0.2);
+  transition: background-color 0.4s ease, box-shadow 0.4s ease, height 0.4s ease;
+  border-bottom: 2px solid var(--color-vintage-accent-gold);
+  overflow: hidden; /* To contain the shine effect */
+}
+
+.vintage-navbar.scrolled {
+  background-color: var(--color-vintage-heading-text);
+  height: 75px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-bottom-color: var(--color-vintage-accent-red);
+}
+.vintage-navbar.scrolled .nav-links,
+.vintage-navbar.scrolled .logo-sub-text, /* Changed from .logo-text */
+.vintage-navbar.scrolled .menu-icon { /* Ensure hamburger icon color changes */
+    color: var(--color-vintage-bg);
+}
+.vintage-navbar.scrolled .logo-main-text { /* Specific for main logo text on scroll */
+    color: var(--color-vintage-accent-gold);
+}
+.vintage-navbar.scrolled .nav-links:hover,
+.vintage-navbar.scrolled .nav-item.active .nav-links {
+    color: var(--color-vintage-accent-gold);
+}
+.vintage-navbar.scrolled .nav-link-underline { /* Ensure underline color adapts */
+    background-color: var(--color-vintage-accent-red);
+}
+.vintage-navbar.scrolled .nav-item.active .nav-link-underline {
+    background-color: var(--color-vintage-accent-gold);
+}
+
+
+.navbar-container.vintage-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  /* Re-use .vintage-container from Home.css for width and padding */
+  width: 90%;
+  max-width: var(--container-width-vintage, 1100px); /* Fallback if var not defined */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- TEXT LOGO STYLES --- */
+.navbar-logo-link-text {
+  color: var(--color-vintage-heading-text);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.1;
+  transition: transform 0.3s ease;
+  padding: 5px 0; /* Add some padding for click area */
+}
+
+.navbar-logo-link-text:hover {
+  transform: scale(1.03);
+}
+
+.logo-main-text {
+  font-family: var(--font-vintage-heading);
+  font-weight: 900;
+  font-size: 2.2rem;
+  color: var(--color-vintage-accent-red);
+  letter-spacing: -1px;
+  text-transform: uppercase;
+}
+
+.logo-sub-text {
+  font-family: var(--font-vintage-accent);
+  font-size: 0.75rem;
+  color: var(--color-vintage-text);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: -2px;
+  opacity: 0.9;
+}
+/* End Text Logo Styles */
+
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  text-align: center;
+  margin: 0; padding: 0;
+}
+
+.nav-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  color: var(--color-vintage-text);
+  font-family: var(--font-vintage-subheading);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.5rem 1.2rem;
+  height: 100%;
+  position: relative;
+  transition: color 0.3s ease;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+.nav-links:hover {
+  color: var(--color-vintage-accent-red);
+}
+
+.nav-link-underline {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: var(--color-vintage-accent-red);
+  transition: width 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  border-radius: 1px;
+}
+.nav-links:hover .nav-link-underline {
+  width: 70%;
+}
+
+.nav-item.active .nav-links {
+  color: var(--color-vintage-accent-red);
+}
+.nav-item.active .nav-link-underline {
+  width: 70%;
+  background-color: var(--color-vintage-accent-gold);
+  animation: activePulse 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes activePulse {
+    0% { opacity: 0.7; transform: translateX(-50%) scaleX(0.95); }
+    100% { opacity: 1; transform: translateX(-50%) scaleX(1.05); }
+}
+
+.navbar-extra {
+  margin-left: 20px;
+}
+.vintage-nav-button {
+  font-family: var(--font-vintage-accent);
+  padding: 8px 18px;
+  border-radius: 2px;
+  background: transparent;
+  color: var(--color-vintage-text);
+  border: 1px solid var(--color-vintage-accent-gold);
+  transition: all 0.3s ease-out;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.vintage-nav-button:hover {
+  background: var(--color-vintage-accent-gold);
+  color: var(--color-vintage-bg);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transform: translateY(-1px);
+}
+.vintage-navbar.scrolled .vintage-nav-button {
+    color: var(--color-vintage-bg);
+    border-color: var(--color-vintage-bg);
+}
+.vintage-navbar.scrolled .vintage-nav-button:hover {
+    background: var(--color-vintage-bg);
+    color: var(--color-vintage-heading-text);
+    border-color: var(--color-vintage-bg);
+}
+
+.navbar-shine-effect {
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(245, 245, 220, 0.15) 50%,
+        transparent 100%
+    );
+    transform: skewX(-25deg);
+    animation: sweepShine 15s infinite linear;
+    animation-delay: 3s;
+    pointer-events: none;
+    z-index: 0;
+}
+@keyframes sweepShine {
+    0% { left: -150%; }
+    50% { left: 150%; }
+    100% { left: 150%; }
+}
+
+/* Responsive Menu (Hamburger) */
+.menu-icon {
+  display: none;
+  color: var(--color-vintage-text); /* Default color */
+  font-size: 1.8rem; /* Adjust size of hamburger/close icon */
+  cursor: pointer;
+}
+
+@media screen and (max-width: 960px) {
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 85px; /* Initial position, will adjust if navbar height changes */
+    left: -100%;
+    opacity: 0; /* Start hidden for transition */
+    transition: all 0.5s ease;
+    background-color: var(--color-vintage-bg-darker);
+    padding: 20px 0;
+    box-shadow: 0 5px 10px rgba(44, 27, 14, 0.15);
+    z-index: -1; /* Ensure it's behind the navbar initially */
+  }
+  .vintage-navbar.scrolled .nav-menu {
+      top: 75px; /* Adjust if scrolled navbar height changes */
+      background-color: var(--color-vintage-heading-text);
+  }
+
+  .nav-menu.active {
+    left: 0;
+    opacity: 1;
+    z-index: 998; /* Below navbar (999) but above page content */
+  }
+
+  .nav-item { width: 100%; height: auto; }
+  .nav-links {
+    text-align: center;
+    padding: 1.2rem 1rem; /* More touch-friendly padding */
+    width: 100%;
+    display: block; /* Use block for full-width click */
+    border-bottom: 1px dotted var(--color-vintage-border);
+  }
+  .vintage-navbar.scrolled .nav-links {
+      border-bottom-color: rgba(245, 245, 220, 0.2); /* Lighter dotted line on dark bg */
+  }
+  .nav-item:last-child .nav-links { border-bottom: none; }
+
+  .nav-links:hover .nav-link-underline,
+  .nav-item.active .nav-link-underline {
+    width: 40%;
+    bottom: 8px; /* Adjust underline position for mobile */
+  }
+
+  .navbar-logo-link-text {
+    /* Optional: If you need to adjust logo position on mobile */
+    /* Example:
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    */
+  }
+  .navbar-extra { display: none; }
+
+  .menu-icon {
+    display: block;
+    position: absolute;
+    top: 50%; /* Vertically center */
+    right: 20px; /* Position from right */
+    transform: translateY(-50%); /* Precise vertical centering */
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+  /* Color of hamburger/close icon when navbar is scrolled */
+  .vintage-navbar.scrolled .menu-icon {
+      color: var(--color-vintage-bg);
+  }
+}

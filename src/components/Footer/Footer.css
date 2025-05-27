@@ -1,0 +1,234 @@
+/* --- VINTAGE SITE FOOTER STYLES --- */
+/* Ensure :root variables from your main vintage CSS (e.g., Home.css) are available */
+
+.vintage-site-footer {
+  background-color: var(--color-vintage-bg-darker, #e0d8c0); /* Fallback color */
+  color: var(--color-vintage-text, #3a2414);
+  padding: 70px 0 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden; /* Important for some pseudo-elements or effects */
+  border-top: 3px double var(--color-vintage-border, #c8bca8); /* Ornate border */
+  box-shadow: 0 -5px 15px rgba(0,0,0,0.1); /* Subtle shadow upwards */
+}
+
+.footer-texture-overlay { /* Optional texture for footer bg */
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url('../../assets/paper-texture-light.png'); /* Your texture */
+  opacity: 0.1; /* Very subtle */
+  pointer-events: none;
+  z-index: 0;
+}
+
+.footer-container-vintage { /* Ensure content is above texture */
+  position: relative;
+  z-index: 1;
+}
+
+.footer-signature-area {
+  margin-bottom: 30px;
+}
+
+.footer-signature-image {
+  max-width: 200px;
+  margin: 0 auto;
+  filter: contrast(1.2) brightness(0.85) sepia(0.35); /* Vintage filter */
+  /* Adjust filter if signature is on white bg:
+     filter: invert(1) brightness(0.65) sepia(0.4) contrast(1.6);
+     mix-blend-mode: multiply; // if footer bg is light like parchment
+  */
+  transition: transform 0.4s ease-in-out;
+}
+.footer-signature-image:hover {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+.footer-quote-area {
+  margin-bottom: 30px;
+  font-family: var(--font-vintage-subheading, serif);
+  font-style: italic;
+}
+.footer-quote-text {
+  font-size: 1.1rem;
+  color: var(--color-vintage-text, #3a2414);
+  margin-bottom: 5px;
+  line-height: 1.6;
+}
+.footer-quote-author {
+  font-size: 0.95rem;
+  color: var(--color-vintage-accent-gold, #8c7853);
+  font-family: var(--font-vintage-accent, cursive);
+}
+
+.footer-separator-vintage {
+  font-family: var(--font-vintage-heading, serif); /* Or a more decorative font */
+  font-size: 1.5rem;
+  color: var(--color-vintage-accent-gold, #8c7853);
+  margin: 20px auto 30px;
+  letter-spacing: 5px;
+  opacity: 0.7;
+}
+
+.footer-credits {
+  font-family: var(--font-vintage-accent, cursive);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-vintage-text, #3a2414);
+  margin-bottom: 30px;
+}
+
+.footer-credits p {
+    margin-bottom: 0; /* Reset paragraph margin if inside footer-credits */
+}
+
+/* --- "Crazy" Portfolio Link Effect --- */
+.portfolio-link {
+  font-weight: bold; /* Make it stand out a bit */
+  color: var(--color-vintage-accent-red, #7a2f2f); /* Distinct color */
+  text-decoration: none;
+  position: relative;
+  display: inline-block; /* Needed for some pseudo-element effects */
+  transition: color 0.3s ease;
+  padding: 2px 0; /* Give some space for effects */
+}
+
+.portfolio-link span { /* Individual letter styling for animation */
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+              color 0.2s ease;
+}
+
+.portfolio-link:hover {
+  color: var(--color-vintage-accent-gold, #8c7853);
+}
+
+/* Jittery / Wavy hover effect for letters */
+.portfolio-link:hover span {
+  color: var(--color-vintage-accent-gold, #8c7853);
+}
+.portfolio-link:hover span:nth-child(odd) {
+  transform: translateY(-3px) rotate(2deg);
+}
+.portfolio-link:hover span:nth-child(even) {
+  transform: translateY(2px) rotate(-3deg);
+}
+.portfolio-link:hover span:nth-child(3n) {
+  transform: translateY(-1px) rotate(-1deg) scale(1.1);
+}
+.portfolio-link:hover span:nth-child(1), /* First letter G */
+.portfolio-link:hover span:nth-child(8) { /* First letter K */
+    font-weight: 900; /* Make initials bolder on hover */
+    color: var(--color-vintage-heading-text);
+    transform: scale(1.2) translateY(-2px);
+}
+
+
+/* Underline effect that looks like it's "drawn" or "etched" */
+.portfolio-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px; /* Thin line */
+  bottom: -2px; /* Position below text */
+  left: 0;
+  background-color: transparent; /* Start transparent */
+  border-bottom: 1.5px dashed var(--color-vintage-accent-red, #7a2f2f); /* Dashed for vintage */
+  opacity: 0.7;
+  transform: scaleX(0); /* Start with no width */
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1),
+              border-color 0.3s ease;
+}
+.portfolio-link:hover::after {
+  transform: scaleX(1);
+  border-bottom-color: var(--color-vintage-accent-gold, #8c7853);
+}
+
+
+.footer-socials-vintage {
+  margin-bottom: 30px;
+}
+.social-link-vintage {
+  font-family: var(--font-vintage-accent, cursive);
+  font-size: 0.9rem;
+  color: var(--color-vintage-text, #3a2414);
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: 0 8px;
+  padding: 5px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.social-link-vintage:hover {
+  color: var(--color-vintage-accent-red, #7a2f2f);
+}
+/* Optional: small icon-like decoration for social links */
+.social-link-vintage::before {
+  content: '[';
+  margin-right: 3px;
+  opacity: 0.6;
+}
+.social-link-vintage::after {
+  content: ']';
+  margin-left: 3px;
+  opacity: 0.6;
+}
+.social-divider-vintage {
+    font-family: var(--font-vintage-body);
+    color: var(--color-vintage-border);
+    margin: 0 5px;
+    font-size: 0.9rem;
+}
+
+.footer-bottom-flourish {
+    font-family: var(--font-vintage-accent, cursive);
+    font-size: 0.85rem;
+    color: var(--color-vintage-accent-gold, #8c7853);
+    opacity: 0.8;
+    margin-top: 20px;
+    letter-spacing: 1px;
+}
+
+/* Responsive adjustments for Footer */
+@media (max-width: 768px) {
+  .vintage-site-footer {
+    padding: 50px 0 30px;
+  }
+  .footer-quote-text {
+    font-size: 1rem;
+  }
+  .footer-credits {
+    font-size: 0.9rem;
+  }
+  .portfolio-link {
+      display: block; /* Stack name on mobile if too long */
+      margin-top: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-signature-image {
+    max-width: 150px;
+  }
+  .footer-quote-text {
+    font-size: 0.95rem;
+    padding: 0 10px; /* Prevent text touching edges */
+  }
+  .footer-credits {
+    font-size: 0.85rem;
+    padding: 0 10px;
+  }
+  .social-link-vintage {
+    font-size: 0.8rem;
+    margin: 0 5px;
+  }
+  .footer-socials-vintage {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+  }
+  .social-divider-vintage {
+      display: none; /* Hide dividers when stacked */
+  }
+}
