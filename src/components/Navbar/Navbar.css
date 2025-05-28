@@ -13,6 +13,7 @@
   --color-vintage-accent-gold: #8c7853;
   --color-vintage-accent-red: #7a2f2f;
   --color-vintage-border: #c8bca8;
+  --container-width-vintage: 1100px; /* Added this as it's used below */
 }
 */
 
@@ -27,7 +28,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 999; /* Navbar itself is on top */
   box-shadow: 0 3px 10px rgba(44, 27, 14, 0.2);
   transition: background-color 0.4s ease, box-shadow 0.4s ease, height 0.4s ease;
   border-bottom: 2px solid var(--color-vintage-accent-gold);
@@ -41,7 +42,7 @@
   border-bottom-color: var(--color-vintage-accent-red);
 }
 .vintage-navbar.scrolled .nav-links,
-.vintage-navbar.scrolled .logo-sub-text, /* Changed from .logo-text */
+.vintage-navbar.scrolled .logo-sub-text,
 .vintage-navbar.scrolled .menu-icon { /* Ensure hamburger icon color changes */
     color: var(--color-vintage-bg);
 }
@@ -62,10 +63,9 @@
 
 .navbar-container.vintage-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Pushes logo left, menu right */
   align-items: center;
   height: 100%;
-  /* Re-use .vintage-container from Home.css for width and padding */
   width: 90%;
   max-width: var(--container-width-vintage, 1100px); /* Fallback if var not defined */
   margin: 0 auto;
@@ -81,7 +81,7 @@
   align-items: flex-start;
   line-height: 1.1;
   transition: transform 0.3s ease;
-  padding: 5px 0; /* Add some padding for click area */
+  padding: 5px 0;
 }
 
 .navbar-logo-link-text:hover {
@@ -109,7 +109,7 @@
 /* End Text Logo Styles */
 
 
-.nav-menu {
+.nav-menu { /* Desktop styles for nav-menu */
   display: flex;
   align-items: center;
   list-style: none;
@@ -172,6 +172,7 @@
     100% { opacity: 1; transform: translateX(-50%) scaleX(1.05); }
 }
 
+/* .navbar-extra and .vintage-nav-button were removed in JSX, so styles can be removed or kept if used elsewhere */
 .navbar-extra {
   margin-left: 20px;
 }
@@ -203,6 +204,8 @@
     color: var(--color-vintage-heading-text);
     border-color: var(--color-vintage-bg);
 }
+/* End .navbar-extra and .vintage-nav-button styles */
+
 
 .navbar-shine-effect {
     position: absolute;
@@ -220,7 +223,7 @@
     animation: sweepShine 15s infinite linear;
     animation-delay: 3s;
     pointer-events: none;
-    z-index: 0;
+    z-index: 0; /* Behind nav content but on top of navbar background */
 }
 @keyframes sweepShine {
     0% { left: -150%; }
@@ -230,54 +233,63 @@
 
 /* Responsive Menu (Hamburger) */
 .menu-icon {
-  display: none;
-  color: var(--color-vintage-text); /* Default color */
-  font-size: 1.8rem; /* Adjust size of hamburger/close icon */
+  display: none; /* Hidden on desktop */
+  color: var(--color-vintage-text);
+  font-size: 1.8rem;
   cursor: pointer;
+  z-index: 1000; /* Ensure icon is clickable, above other navbar content like shine effect */
 }
 
 @media screen and (max-width: 960px) {
-  .nav-menu {
+  .nav-menu { /* Mobile menu - initial hidden state */
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100%; /* Full width for the dropdown */
     position: absolute;
-    top: 85px; /* Initial position, will adjust if navbar height changes */
-    left: -100%;
-    opacity: 0; /* Start hidden for transition */
-    transition: all 0.5s ease;
+    top: 85px; /* Position below navbar. Adjust if initial navbar height is different */
+    left: -100%; /* Start off-screen to the left */
+    opacity: 0; /* Start fully transparent */
+    transition: left 0.5s ease-in-out, opacity 0.4s ease-in-out; /* Smooth transition for left and opacity */
     background-color: var(--color-vintage-bg-darker);
-    padding: 20px 0;
+    padding: 20px 0; /* Padding when menu is open */
     box-shadow: 0 5px 10px rgba(44, 27, 14, 0.15);
-    z-index: -1; /* Ensure it's behind the navbar initially */
-  }
-  .vintage-navbar.scrolled .nav-menu {
-      top: 75px; /* Adjust if scrolled navbar height changes */
-      background-color: var(--color-vintage-heading-text);
+    pointer-events: none; /* Prevent interaction when hidden */
   }
 
-  .nav-menu.active {
-    left: 0;
-    opacity: 1;
-    z-index: 998; /* Below navbar (999) but above page content */
+  .vintage-navbar.scrolled .nav-menu { /* Adjust top position if navbar shrinks on scroll */
+      top: 75px; /* Match scrolled navbar height */
+      background-color: var(--color-vintage-heading-text); /* Match scrolled navbar bg */
   }
 
-  .nav-item { width: 100%; height: auto; }
+  .nav-menu.active { /* Mobile menu - visible state */
+    left: 0; /* Slide in from the left */
+    opacity: 1; /* Become fully visible */
+    z-index: 998; /* Below main navbar (z-index: 999) but above page content */
+    pointer-events: auto; /* Allow interaction when visible */
+  }
+
+  .nav-item {
+    width: 100%;
+    height: auto; /* Allow items to define their height based on padding */
+  }
+
   .nav-links {
     text-align: center;
     padding: 1.2rem 1rem; /* More touch-friendly padding */
     width: 100%;
-    display: block; /* Use block for full-width click */
+    display: block; /* Ensure full width for tapping */
     border-bottom: 1px dotted var(--color-vintage-border);
   }
   .vintage-navbar.scrolled .nav-links {
-      border-bottom-color: rgba(245, 245, 220, 0.2); /* Lighter dotted line on dark bg */
+      border-bottom-color: rgba(245, 245, 220, 0.2); /* Lighter dotted line for scrolled dark bg */
   }
-  .nav-item:last-child .nav-links { border-bottom: none; }
+  .nav-item:last-child .nav-links {
+      border-bottom: none;
+  }
 
   .nav-links:hover .nav-link-underline,
   .nav-item.active .nav-link-underline {
-    width: 40%;
+    width: 40%; /* Adjust underline for mobile */
     bottom: 8px; /* Adjust underline position for mobile */
   }
 
@@ -290,19 +302,17 @@
     transform: translateY(-50%);
     */
   }
+  /* Since .navbar-extra was removed from JSX, this style block is not strictly needed unless .navbar-extra is used elsewhere */
   .navbar-extra { display: none; }
 
-  .menu-icon {
-    display: block;
-    position: absolute;
+  .menu-icon { /* Hamburger icon styles */
+    display: block; /* Show on mobile */
+    position: absolute; /* Position relative to navbar */
     top: 50%; /* Vertically center */
     right: 20px; /* Position from right */
     transform: translateY(-50%); /* Precise vertical centering */
-    font-size: 1.8rem;
-    cursor: pointer;
   }
-  /* Color of hamburger/close icon when navbar is scrolled */
-  .vintage-navbar.scrolled .menu-icon {
+  .vintage-navbar.scrolled .menu-icon { /* Color when navbar is scrolled */
       color: var(--color-vintage-bg);
   }
 }
