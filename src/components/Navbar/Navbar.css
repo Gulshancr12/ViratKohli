@@ -97,7 +97,7 @@
 }
 .nav-links:hover { color: var(--color-vintage-accent-red); }
 .nav-link-underline {
-  position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%);
+  position: absolute; bottom: 9px; left: 50%; transform: translateX(-50%);
   width: 0; height: 2px; background-color: var(--color-vintage-accent-red);
   transition: width 0.4s cubic-bezier(0.645, 0.045, 0.355, 1); border-radius: 1px;
 }
